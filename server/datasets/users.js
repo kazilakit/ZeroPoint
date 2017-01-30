@@ -1,10 +1,9 @@
 /**
- * Created by Kazi Lakit on 1/29/2017.
+ * Created by Lakit on 29-01-17.
  */
+var mongoose=require('mongoose');
 
-var mongoose = require('mongoose');
-
-module.exports = mongoose.model('User',{
+module.exports=mongoose.model('User',{
     email: String,
     password: String
 });

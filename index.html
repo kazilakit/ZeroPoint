@@ -2,17 +2,29 @@
 <html lang="en" ng-app="ZeroPoint">
 <head>
     <meta charset="UTF-8">
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet"/>
-    <title>Zero Point</title>
+    <title>Zero point</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="app/css/main.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top">
+
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavigationController">
     <div class="container">
-        Home
+        <div>
+            <input type="text" ng-model="login.email" class="form-control">
+            <input type="password" ng-model="login.password" class="form-control">
+            <button ng-click="logUserin()">Log In</button>
+            <a ui-sref="signUp">Create an Account</a>
+        </div>
     </div>
 </nav>
+<body>
+
+<div ui-view></div>
+
 </body>
-<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
-<script src="/app/app.js"></script>
+<script src="app/app.js"></script>
+<script src="app/signup/signup-controller.js"></script>
+<script src="app/navigation/navigation-controller.js"></script>
 </html>
