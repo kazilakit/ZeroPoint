@@ -12,4 +12,26 @@ module.exports.updatePhoto = function (req, res) {
     console.log(userId);
 
     console.log("User " + userId + " is uploading ",file);
+
+    var uploadDate = new Date().toISOString();
+    uploadDate = uploadDate
+                    .replace(".", "")
+                    .replace("-","")
+                    .replace(":", "");
+
+
+    var tempPath = file.path;
+    var targetPath = path
+                     .join(__dirname, "../../upload/" + userId + uploadDate + file.name);
+
+    console.log(uploadDate);
+    console.log(tempPath);
+    console.log(targetPath);
+    fs.rename(tempPath, targetPath, function (err) {
+       if(err){
+           console.log(err);
+       } else {
+           console.log("File Moved");
+       }
+    });
 };
