@@ -17,15 +17,27 @@ module.exports.updatePhoto = function (req, res) {
 
     uploadDate = uploadDate.replace(/[^a-zA-Z0-9]/g, "");
 
+    var savePath = "../../upload/" + userId + uploadDate + file.name
     var tempPath = file.path;
     var targetPath = path
-                     .join(__dirname, "../../upload/" + userId + uploadDate + file.name);
+                     .join(__dirname, savePath);
 
     fs.move(tempPath, targetPath, function (err) {
        if(err){
            console.log(err);
        } else {
-           console.log("File Moved");
+           User.findById(userId, function (err, userData) {
+               var user = userData;
+               user.image =  savePath;
+               user.save(function (err) {
+                   if(err){
+                       console.log(err);
+                   }else {
+                       console.log("Save Successful");
+                   }
+               });
+
+           });
        }
     });
 
