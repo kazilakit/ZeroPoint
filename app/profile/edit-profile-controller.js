@@ -34,6 +34,25 @@
                            });
                        }
                    };
+                   
+                   $scope.updateUserName = function () {
+                       var request = {
+                           userId: $scope.user.data.id,
+                           userName: $scope.user.userName
+                       };
+
+                       console.log($scope.user.data.id);
+                       console.log($scope.user.userName);
+                       $http.post('/api/profile/updateUserName', request)
+                           .then(function () {
+                               console.log('done');
+
+                       }).catch(function (err) {
+                           console.log(err);
+
+                       });
+
+                   };
 
                }]);
     }()

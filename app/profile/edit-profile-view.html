@@ -5,10 +5,10 @@
     </div>
 
     <div class="row">
-        <input class="form-control" ng-model="user.userName">
+        <input class="form-control" ng-model="user.userName" ng-blur="updateUserName()">
     </div>
 
     <div class="row">
-        <textarea class="form-control" ng-model="user.bio"></textarea>
+        <textarea class="form-control" ng-model="user.bio" ng-blur="updateBio()"></textarea>
     </div>
 </div>

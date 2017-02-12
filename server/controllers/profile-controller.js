@@ -32,8 +32,10 @@ module.exports.updatePhoto = function (req, res) {
                user.save(function (err) {
                    if(err){
                        console.log(err);
+                       res.json({status: 500});
                    }else {
                        console.log("Save Successful");
+                       res.json({status: 200});
                    }
                });
 
@@ -42,4 +44,26 @@ module.exports.updatePhoto = function (req, res) {
     });
 
 
+};
+
+module.exports.updateUserName =  function (req, res) {
+    var userName = req.body.userName;
+    var userId = req.body.userId;
+
+    console.log(userName);
+
+    User.findById(userId, function (err, userData) {
+        var user = userData;
+        user.userName = userName;
+
+        user.save(function (err) {
+            if(err){
+                console.log(err);
+                res.json({status: 500});
+            }else {
+                console.log('success');
+                res.json({status: 200});
+            }
+        });
+    })
 };
