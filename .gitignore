@@ -1,0 +1,2 @@
+#ignore all webstorm files in .idea/ folder
+.idea/*
