@@ -65,5 +65,25 @@ module.exports.updateUserName =  function (req, res) {
                 res.json({status: 200});
             }
         });
-    })
+    });
+};
+
+module.exports.updateUserBio = function (req, res) {
+    var userBio = req.body.bio;
+    var userId = req.body.userId;
+
+    User.findById(userId, function (err, userData) {
+        var user = userData;
+        user.bio = userBio;
+        user.save(function (err) {
+            if(err){
+                console.log(err);
+                res.json({status: 500});
+            }
+            else {
+                console.log("Done");
+                res.json({status: 200});
+            }
+        });
+    });
 };

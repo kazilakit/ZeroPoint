@@ -30,7 +30,8 @@ app.post('/api/user/login', authenticationController.login);
 
 //Profile
 app.post('/api/profile/editPhoto', multipartMiddleware, profileController.updatePhoto);
-app.post('/api/profile/updateUserName', profileController.updateUserName)
+app.post('/api/profile/updateUserName', profileController.updateUserName);
+app.post('/api/profile/updateUserBio', profileController.updateUserBio);
 
 app.listen('3000',function () {
     console.log("Listening for Local Host 3000");

@@ -54,6 +54,20 @@
 
                    };
 
+                   $scope.updateBio = function () {
+                       var request = {
+                           userId: $scope.user.data.id,
+                           bio: $scope.user.bio
+                       };
+
+                       $http.post('/api/profile/updateUserBio', request)
+                           .then(function (response) {
+                               console.log(response);
+                           }).catch(function (error) {
+                               console.log(error);
+                       });
+                   };
+
                }]);
     }()
 );

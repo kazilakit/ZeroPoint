@@ -6,6 +6,10 @@
        angular.module('ZeroPoint',['ui.router', 'ngFileUpload'])
            .config(function ($stateProvider) {
                $stateProvider
+                   .state('/',{
+                       url: "/",
+                       controller: "NavigationController"
+                   })
                    .state('signUp',{
                        url: "/signup",
                        templateUrl: "app/signup/signup.html",
