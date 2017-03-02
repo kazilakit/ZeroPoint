@@ -4,7 +4,10 @@
 (
     function () {
        angular.module('ZeroPoint',['ui.router', 'ngFileUpload'])
-           .config(function ($stateProvider) {
+           .config(function ($stateProvider, $urlRouterProvider) {
+
+               $urlRouterProvider.otherwise('/');
+
                $stateProvider
                    .state('/',{
                        url: "/",
@@ -20,6 +23,12 @@
                        templateUrl: "app/profile/edit-profile-view.html",
                        controller: "EditProfileController"
                    })
+                   .state('main',{
+                       url: "/feed",
+                       templateUrl: "app/main/main.html",
+                       controller: "MainController"
+                   })
+
 
            });
     }()
