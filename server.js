@@ -11,7 +11,8 @@ var multipartMiddleware = multiParty();
 
 var app = express();
 var authenticationController = require('./server/controllers/authentication-controller');
-var profileController = require('./server/controllers/profile-controller')
+var profileController = require('./server/controllers/profile-controller');
+var feedController = require('./server/controllers/feed-controller');
 
 mongoose.connect('mongodb://localhost:27017/zero-point');
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(multipartMiddleware);
 app.use('/app', express.static(__dirname + '/app'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/upload', express.static(__dirname + '/upload'));
 
 app.get('/',function (req, res) {
     res.sendfile('index.html');
@@ -32,6 +34,9 @@ app.post('/api/user/login', authenticationController.login);
 app.post('/api/profile/editPhoto', multipartMiddleware, profileController.updatePhoto);
 app.post('/api/profile/updateUserName', profileController.updateUserName);
 app.post('/api/profile/updateUserBio', profileController.updateUserBio);
+
+//feed
+app.post('/api/feed/postFeed', feedController.postFeed);
 
 app.listen('3000',function () {
     console.log("Listening for Local Host 3000");

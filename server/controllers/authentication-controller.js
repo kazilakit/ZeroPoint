@@ -21,8 +21,10 @@ module.exports.login = function (req, res) {
             var userData=results[0];
             res.json(
                 {
-                    email: req.body.email
-                    ,id: userData._id
+                    email: req.body.email,
+                    id: userData._id,
+                    userName: userData.userName,
+                    image: userData.image
                 });
         }
     });

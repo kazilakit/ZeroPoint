@@ -3,3 +3,8 @@
 body{
     margin-top: 150px;
 }
+
+.feed-section img{
+    width: 100px;
+    height:100px;
+}

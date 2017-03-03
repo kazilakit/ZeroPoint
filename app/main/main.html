@@ -1,3 +1,25 @@
 <div class="col-sm-10 col-sm-offset-1">
-    this is the feed
+    <div class="row">
+        <textarea class="form-control" ng-model="newFeed">
+
+        </textarea>
+    </div>
+    <div class="row">
+        <input type="button" value="Post" class="btn-primary" ng-click="postFeed()">
+    </div>
+
+    <div class="row">
+        <table class="feed-section">
+            <tr ng-repeat="feed in feeds">
+                <td><strong>{{feed.user}}</strong>
+                    <img ng-src="{{feed.image}}" class="img-responsive"/>
+                </td>
+
+                <td>
+                    <strong>{{feed.content}}</strong>
+                    {{feed.date | date:'MM/dd/yyyy hh:mm'}}
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
