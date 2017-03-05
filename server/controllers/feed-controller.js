@@ -3,19 +3,28 @@
  */
 
 var Feed = require('../datasets/feed');
+
 module.exports.postFeed = function (req, res) {
     //console.log(req.body);
     var feed = new Feed(req.body);
-    feed.save();
+    //feed.save();
+    Feed.create(feed, function (error) {
 
-    Feed.find({}).sort({date: -1}).exec(function (err, response) {
-        if(err){
-            res.error(err);
+        if(error){
+            console.log(error);
         }
         else {
-            console.log(response);
-            res.json(response);
-        }
+            Feed.find({}).sort({date: -1}).exec(function (err, response) {
+                if (err) {
+                    res.error(err);
+                }
+                else {
+                    console.log(response);
+                    res.json(response);
+                }
 
+            });
+        }
     });
+
 }
