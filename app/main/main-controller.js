@@ -30,5 +30,41 @@
 
                     })
             }
+
+            function getFeeds(initial) {
+
+                $http.get('/api/feed/getFeeds')
+                    .then(function (response) {
+                        console.log(response);
+                        if(initial) {
+                            $scope.feeds = response.data;
+                        }
+                        else {
+                            if(response.data.length > $scope.feeds) {
+                                $scope.incommingFeeds = response.data;
+                            }
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            }
+
+
+            $interval(function () {
+                getFeeds(false);
+                if($scope.incommingFeeds) {
+                    $scope.difference = $scope.incommingFeeds.length - $scope.feeds.length;
+                }
+            },5000)
+            getFeeds(true);
+            
+            $scope.setNewFeeds = function () {
+
+                $scope.feeds = angular.copy($scope.incommingFeeds);
+                $scope.incommingFeeds = undefined;
+
+                
+            }
         }]);
 }())

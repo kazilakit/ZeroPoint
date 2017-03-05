@@ -10,6 +10,7 @@
 
     <div class="row">
         <table class="feed-section">
+            <tr><a ng-if="incommingFeeds.length > 0" ng-click="setNewFeeds()">new post {{difference}}</a></tr>
             <tr ng-repeat="feed in feeds">
                 <td><strong>{{feed.user}}</strong>
                     <img ng-src="{{feed.image}}" class="img-responsive"/>

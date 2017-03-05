@@ -37,6 +37,7 @@ app.post('/api/profile/updateUserBio', profileController.updateUserBio);
 
 //feed
 app.post('/api/feed/postFeed', feedController.postFeed);
+app.get('/api/feed/getFeeds', feedController.getFeeds);
 
 app.listen('3000',function () {
     console.log("Listening for Local Host 3000");
