@@ -40,7 +40,7 @@
                             $scope.feeds = response.data;
                         }
                         else {
-                            if(response.data.length > $scope.feeds) {
+                            if(response.data.length > $scope.feeds.length) {
                                 $scope.incommingFeeds = response.data;
                             }
                         }
@@ -55,6 +55,7 @@
                 getFeeds(false);
                 if($scope.incommingFeeds) {
                     $scope.difference = $scope.incommingFeeds.length - $scope.feeds.length;
+                    console.log($scope.difference);
                 }
             },5000)
             getFeeds(true);

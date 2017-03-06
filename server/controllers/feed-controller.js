@@ -19,7 +19,7 @@ module.exports.postFeed = function (req, res) {
                     res.error(err);
                 }
                 else {
-                    console.log(response);
+
                     res.json(response);
                 }
 
